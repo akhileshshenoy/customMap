@@ -19,13 +19,44 @@ class MapViewController: UIViewController {
         
         setupView()
         checkLocationServices()
-        mapView.delegate = self
+        mapKitView.delegate = self
+        
+        let sC = (locationManager.location?.coordinate)!
+        let dC = CLLocationCoordinate2DMake(13.344705, 74.793340)
+        
+        let sP = MKPlacemark(coordinate: sC)
+        let dP = MKPlacemark(coordinate: dC)
+        
+        let sI = MKMapItem(placemark: sP)
+        let dI = MKMapItem(placemark: dP)
+        
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sI
+        directionRequest.destination = dI
+        directionRequest.transportType = .walking
+        
+        let direction = MKDirections(request: directionRequest)
+        direction.calculate(completionHandler: {
+            res,err in
+            guard let res = res else {
+                if let err = err {
+                    print(err)
+                }
+                return
+            }
+            
+            let route  = res.routes[0]
+            self.mapKitView.addOverlay(route.polyline, level: .aboveRoads)
+            let rekt = route.polyline.boundingMapRect
+            self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
+            
+        })
         // Do any additional setup after loading the view.
     }
     
     let locationManager = CLLocationManager()
     
-    let mapView:MKMapView!={
+    let mapKitView:MKMapView={
     let map = MKMapView()
         map.mapType = MKMapType.standard
         map.isRotateEnabled = true
@@ -38,12 +69,12 @@ class MapViewController: UIViewController {
     
     func setupView()
     {
-        view.addSubview(mapView)
+        view.addSubview(mapKitView)
         let leftMargin:CGFloat = 0
-        let topMargin:CGFloat = 0
+        let topMargin:CGFloat = view.safeAreaInsets.top
         let mapWidth:CGFloat = view.frame.size.width
         let mapHeight:CGFloat = view.frame.size.height
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+        mapKitView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
         addAnn()
     }
     
@@ -59,7 +90,7 @@ class MapViewController: UIViewController {
         {
            
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 200, longitudinalMeters: 200)
-            mapView.setRegion(region, animated: true)
+            mapKitView.setRegion(region, animated: true)
         }
     }
     
@@ -83,7 +114,7 @@ class MapViewController: UIViewController {
         {
             case .authorizedWhenInUse:
                 print(1)
-                mapView.showsUserLocation = true
+                mapKitView.showsUserLocation = true
                 locationManager.startUpdatingLocation()
                 centreViewOnUserLocation()
                 
@@ -113,9 +144,8 @@ class MapViewController: UIViewController {
     {
         let NLH = MKPointAnnotation()
         NLH.title = "NLH"
-        NLH.coordinate = CLLocationCoordinate2D(latitude: 13.351356, longitude: 74.793067)
-        mapView.addAnnotation(NLH)
-        
+        NLH.coordinate = CLLocationCoordinate2D(latitude: 13.351374, longitude: 74.792903)
+        mapKitView.addAnnotation(NLH)
     }
     
     //For custom tile from google
@@ -131,10 +161,10 @@ class MapViewController: UIViewController {
        guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
            return
        }
-        tileOverlay.minimumZ = 1
-        tileOverlay.maximumZ = 100
+//        tileOverlay.minimumZ = 1
+//        tileOverlay.maximumZ = 100
            // And finally add it to your MKMapView
-        mapView.addOverlay(tileOverlay, level: .aboveLabels)
+        mapKitView.addOverlay(tileOverlay, level: .aboveRoads)
     }
 }
 
@@ -144,7 +174,7 @@ extension MapViewController:CLLocationManagerDelegate
         guard let location = locations.last else {return}
         let centre = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: centre, latitudinalMeters: 300, longitudinalMeters: 300)
-        mapView.setRegion(region, animated: true)
+        mapKitView.setRegion(region, animated: true)
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
@@ -159,9 +189,17 @@ extension MapViewController:MKMapViewDelegate {
            // for displaying the tile overlay.
            if let tileOverlay = overlay as? MKTileOverlay {
                return MKTileOverlayRenderer(tileOverlay: tileOverlay)
-           } else {
+           }
+            else if let roverlay = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: roverlay)
+                                     renderer.strokeColor = UIColor.systemBlue
+                                     renderer.lineWidth = 5
+                                     return renderer
+            }
+        else {
                return MKOverlayRenderer(overlay: overlay)
            }
+       
        }
 
 }

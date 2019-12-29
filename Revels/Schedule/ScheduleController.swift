@@ -340,7 +340,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             guard let start = item.start, let end = item.end, let venue = item.location, let round = item.round else {
                 return
             }
-            let event = eventDict[item.event] as! Event
+            let event = eventDict[item.event!] as! Event
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
             let startDate = formatter.date(from: start)

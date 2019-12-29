@@ -325,7 +325,7 @@
 		1D6ADC228580D2F13AEB799B546DD832 /* lottie-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "lottie-ios-umbrella.h"; sourceTree = "<group>"; };
 		1D9863DDD7CB94F67FF14D028AAFB557 /* SDImageCacheConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheConfig.h; path = SDWebImage/SDImageCacheConfig.h; sourceTree = "<group>"; };
 		1E87D9DE873F9BB2FC27FB863F8C0B2C /* LOTCacheProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTCacheProvider.m; path = "lottie-ios/Classes/Private/LOTCacheProvider.m"; sourceTree = "<group>"; };
-		2093DCEEE7603BA4769D710B269C0A86 /* Pods_Revels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Revels.framework; path = "Pods-Revels.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2093DCEEE7603BA4769D710B269C0A86 /* Pods_Revels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Revels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2242412C2771037E2E598D1C4D258371 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		22DE60D5DFDCE3A1AEE3699A253B5353 /* lottie-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "lottie-ios-dummy.m"; sourceTree = "<group>"; };
 		234F3A6A84C6764047BFE84049318108 /* LOTShapeFill.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeFill.h; path = "lottie-ios/Classes/Models/LOTShapeFill.h"; sourceTree = "<group>"; };
@@ -368,11 +368,11 @@
 		4CF75DA8E5592FA155219BAAA6B8506D /* LOTAnimatedControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTAnimatedControl.h; path = "lottie-ios/Classes/PublicHeaders/LOTAnimatedControl.h"; sourceTree = "<group>"; };
 		4E253DC120C24E33966DC7DA2F748AE4 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		4F8256D470CAEAD98E2CC992EAB316E4 /* LOTModels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTModels.h; path = "lottie-ios/Classes/Models/LOTModels.h"; sourceTree = "<group>"; };
-		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Lottie.framework; path = "lottie-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C93ADCF46B37DF97C48B09C4F1A7EB /* LOTShapeGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeGroup.h; path = "lottie-ios/Classes/Models/LOTShapeGroup.h"; sourceTree = "<group>"; };
 		52291B48D08044C0D8A146631210AFE3 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/SDAnimatedImageRep.h; sourceTree = "<group>"; };
 		5491D3DFE312978E49BD2415341CE884 /* UIImage+MemoryCacheCost.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemoryCacheCost.h"; path = "SDWebImage/UIImage+MemoryCacheCost.h"; sourceTree = "<group>"; };
-		55BE2AA3F508CD553AA3B1DCE98FDAE1 /* GoogleMapsTileOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleMapsTileOverlay.framework; path = GoogleMapsTileOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55BE2AA3F508CD553AA3B1DCE98FDAE1 /* GoogleMapsTileOverlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleMapsTileOverlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5728855367263EC909F196A46C18372A /* LOTAnimationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAnimationView.m; path = "lottie-ios/Classes/Private/LOTAnimationView.m"; sourceTree = "<group>"; };
 		5779FC2B37BD78440048AA94985FF3D1 /* lottie-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "lottie-ios.modulemap"; sourceTree = "<group>"; };
 		58DFE277C168739D82C3892C81C3941E /* NSImage+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSImage+WebCache.m"; path = "SDWebImage/NSImage+WebCache.m"; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 		5BA6351F3B29AB34AFBD3D1397E6D408 /* LOTFillRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTFillRenderer.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTFillRenderer.m"; sourceTree = "<group>"; };
 		5CDF7F3527E234E04F5D9515A2E3794E /* ElementType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementType.swift; path = MapKitGoogleStyler/Classes/ElementType.swift; sourceTree = "<group>"; };
 		5CF509EA95BE3D11F1E584391EEA1B5D /* LOTAsset.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTAsset.m; path = "lottie-ios/Classes/Models/LOTAsset.m"; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F820F834B0640A940342B87670059C6 /* LOTNumberInterpolator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTNumberInterpolator.h; path = "lottie-ios/Classes/RenderSystem/InterpolatorNodes/LOTNumberInterpolator.h"; sourceTree = "<group>"; };
 		60D7EFA9F76D85CD049FEBDC7396D2FD /* GoogleMapsTileOverlay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleMapsTileOverlay-prefix.pch"; sourceTree = "<group>"; };
 		614762AF1F07435CB1FA5CE15153EFA5 /* GoogleMapsTileOverlay.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleMapsTileOverlay.modulemap; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 		9AF06C6E21710D5747AEB031CFBFF330 /* LOTRepeaterRenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTRepeaterRenderer.m; path = "lottie-ios/Classes/RenderSystem/RenderNodes/LOTRepeaterRenderer.m"; sourceTree = "<group>"; };
 		9C71B417BC643B26766A9B6914C5B904 /* LOTKeypath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTKeypath.h; path = "lottie-ios/Classes/PublicHeaders/LOTKeypath.h"; sourceTree = "<group>"; };
 		9CFC3133931C5EFC2B65647A9FB43700 /* LOTShapeTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTShapeTransform.h; path = "lottie-ios/Classes/Models/LOTShapeTransform.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DC4374638FDD13DC8D2DE1859112449 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		A086358FC4494D62E7F8AB11DCA5F091 /* UIBezierPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = UIBezierPath.m; path = "lottie-ios/Classes/MacCompatibility/UIBezierPath.m"; sourceTree = "<group>"; };
 		A18DFC98CB4F3D27A54BD63B6872BEE8 /* SDWebImageCodersManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCodersManager.m; path = SDWebImage/SDWebImageCodersManager.m; sourceTree = "<group>"; };
@@ -470,8 +470,8 @@
 		AE09E1489C599D20CEC2A663EC3DBD51 /* LOTLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LOTLayer.h; path = "lottie-ios/Classes/Models/LOTLayer.h"; sourceTree = "<group>"; };
 		AEABACCE065681A98661933CA7943F56 /* GoogleMapsTileOverlay-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleMapsTileOverlay-umbrella.h"; sourceTree = "<group>"; };
 		AEE81F2B4765BE8E7E79C8CD73434B71 /* LOTShapeCircle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTShapeCircle.m; path = "lottie-ios/Classes/Models/LOTShapeCircle.m"; sourceTree = "<group>"; };
-		AF02BCD364CC464F5598541ABEBBB897 /* MapKitGoogleStyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MapKitGoogleStyler.framework; path = MapKitGoogleStyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF02BCD364CC464F5598541ABEBBB897 /* MapKitGoogleStyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapKitGoogleStyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FE6D8644D3B280D15D1F2ED156603E /* LOTComposition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LOTComposition.m; path = "lottie-ios/Classes/Private/LOTComposition.m"; sourceTree = "<group>"; };
 		B2DCD003C7762D850243EFB535CA1E08 /* SDWebImageGIFCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageGIFCoder.h; path = SDWebImage/SDWebImageGIFCoder.h; sourceTree = "<group>"; };
 		B2F31C20E55FFF920A392F42E5B8DB81 /* SDAnimatedImageRep.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageRep.m; path = SDWebImage/SDAnimatedImageRep.m; sourceTree = "<group>"; };
@@ -750,7 +750,6 @@
 				B6970431241CFA2427EB10B375BFA6E0 /* UIColor+Expanded.m */,
 				BA2EB9D2521DEB33DAB82DA9A10CF0E3 /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -788,7 +787,6 @@
 				0CFB210569DF21E1B3A1D30E9BE8A4BC /* StylerType.swift */,
 				56E112FAD154C9A1709EC429D3882341 /* Support Files */,
 			);
-			name = MapKitGoogleStyler;
 			path = MapKitGoogleStyler;
 			sourceTree = "<group>";
 		};
@@ -924,7 +922,6 @@
 				B4B1D5F7D05AAAD11CE677424E090E14 /* Core */,
 				26CF11322D90789B6C0E22BEB9A9AE5F /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -950,7 +947,6 @@
 				763B1468AF4D002B39F8CFBA2E6C0121 /* Validation.swift */,
 				5FBE7E7D8C4DDEE450D82EA15AFBA9F2 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1002,7 +998,6 @@
 				4817CBF8F7A23CCA5768154D16B17AB6 /* GoogleMapsURLStyleConverter.swift */,
 				D4DE64C206187D6EA85FB7DCF6DFAAE4 /* Support Files */,
 			);
-			name = GoogleMapsTileOverlay;
 			path = GoogleMapsTileOverlay;
 			sourceTree = "<group>";
 		};
@@ -1289,6 +1284,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					A384F059A39EEEC92C37F789F58DF8B0 = {
+						LastSwiftMigration = 1130;
+					};
+					EAAA1AD3A8A1B59AB91319EE40752C6D = {
+						LastSwiftMigration = 1130;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1832,7 +1835,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1867,7 +1870,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1902,7 +1905,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1938,7 +1941,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
