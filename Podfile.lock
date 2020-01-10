@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.8.1)
-  - GoogleMapsTileOverlay (0.4.1)
   - lottie-ios (2.5.2)
   - MapKitGoogleStyler (0.1.1)
   - SDWebImage (4.4.5):
@@ -9,7 +8,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - GoogleMapsTileOverlay
   - lottie-ios
   - MapKitGoogleStyler
   - SDWebImage
@@ -17,18 +15,16 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - GoogleMapsTileOverlay
     - lottie-ios
     - MapKitGoogleStyler
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  GoogleMapsTileOverlay: c8218e3d7f06dd6ea24e25fc424f2d7869d46a1c
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MapKitGoogleStyler: 8efdceb664fc1748a62a9e3b50a34b67a34247bc
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
 
-PODFILE CHECKSUM: 6c162ad31eb46c4b8cf652481e4ca29b3bb2d236
+PODFILE CHECKSUM: ec9a07abb2d61318772686a6ed60e75c25af3eee
 
 COCOAPODS: 1.8.4

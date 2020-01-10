@@ -19,6 +19,7 @@ class MainTabBarController: UITabBarController {
 //        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0)
         
         let mapViewController = MapViewController()
+        //let mapViewController = LocationSearchTableViewController()
         mapViewController.tabBarItem = UITabBarItem(title: "Map",image: UIImage(named: "home"),tag: 0)
 //        let mapViewNavigationController =  UINavigationController(rootViewController: mapViewController)
 //        mapViewNavigationController.tabBarItem = UITabBarItem(title: "Map",image: UIImage(named: "home"),tag: 0)

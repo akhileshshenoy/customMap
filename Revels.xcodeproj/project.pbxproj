@@ -11,6 +11,8 @@
 		5D3FF89423B138E9007D9F7E /* MITGPX.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FF89323B138E9007D9F7E /* MITGPX.gpx */; };
 		5D40D81E23B782C7002E3432 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D40D81D23B782C7002E3432 /* test.json */; };
 		5D924DE523AF73A10026DC4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D924DE423AF73A10026DC4D /* MapKit.framework */; };
+		5DE90C3C23C85AA6008DDFB8 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */; };
+		5DE90C3E23C85E00008DDFB8 /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */; };
 		AA6AEBB517B826AB4AD62383 /* Pods_Revels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */; };
 		B218149B220318F600709C27 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218149A220318F600709C27 /* Model.swift */; };
 		B23AFC2021E9D5D200DAF0DD /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23AFC1F21E9D5D200DAF0DD /* EventCell.swift */; };
@@ -69,6 +71,8 @@
 		5D3FF89323B138E9007D9F7E /* MITGPX.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MITGPX.gpx; sourceTree = "<group>"; };
 		5D40D81D23B782C7002E3432 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = Revels/test.json; sourceTree = SOURCE_ROOT; };
 		5D924DE423AF73A10026DC4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		7A61659F94DD5DCA31B45E54 /* Pods-Revels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels/Pods-Revels.debug.xcconfig"; sourceTree = "<group>"; };
 		AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Revels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B218149A220318F600709C27 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
+				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
+				5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */,
 				5D3FF89323B138E9007D9F7E /* MITGPX.gpx */,
 			);
 			path = Map;
@@ -489,6 +495,7 @@
 				B2C0F93921CB7CE100E4550C /* MenuCell.swift in Sources */,
 				B252280A2228A36200EF9A8D /* EventTableViewCell.swift in Sources */,
 				B25227C5222883B000EF9A8D /* PostCollectionViewCell.swift in Sources */,
+				5DE90C3E23C85E00008DDFB8 /* LocationSearchTableViewCell.swift in Sources */,
 				B25228082228A36200EF9A8D /* EventsController.swift in Sources */,
 				B25227C1222883B000EF9A8D /* StetchyHeaderLayout.swift in Sources */,
 				B2943B6B2229852C0045D89F /* ResultsModel.swift in Sources */,
@@ -515,6 +522,7 @@
 				B218149B220318F600709C27 /* Model.swift in Sources */,
 				B252278F222831B400EF9A8D /* QRCodeReader.swift in Sources */,
 				B2522795222831B400EF9A8D /* SwitchCameraButton.swift in Sources */,
+				5DE90C3C23C85AA6008DDFB8 /* LocationSearchTableViewController.swift in Sources */,
 				B2943B692229852C0045D89F /* ResultsCell.swift in Sources */,
 				B2C0F93A21CB7CE100E4550C /* MenuController.swift in Sources */,
 				B2C0F93C21CB7CE100E4550C /* ScheduleController.swift in Sources */,
