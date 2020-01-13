@@ -12,7 +12,6 @@ class LocationSearchTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         // Initialization code
     }
 
@@ -28,6 +27,7 @@ class LocationSearchTableViewCell: UITableViewCell {
     }()
     
     func setupViews() {
+    
     addSubview(placeLabel)
     placeLabel.textAlignment = .left
         placeLabel.textColor = .black

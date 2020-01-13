@@ -11,6 +11,7 @@
 		5D3FF89423B138E9007D9F7E /* MITGPX.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FF89323B138E9007D9F7E /* MITGPX.gpx */; };
 		5D40D81E23B782C7002E3432 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D40D81D23B782C7002E3432 /* test.json */; };
 		5D924DE523AF73A10026DC4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D924DE423AF73A10026DC4D /* MapKit.framework */; };
+		5DAB4A8E23CB748300CF4090 /* mapTile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAB4A8D23CB748300CF4090 /* mapTile.json */; };
 		5DE90C3C23C85AA6008DDFB8 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */; };
 		5DE90C3E23C85E00008DDFB8 /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */; };
 		AA6AEBB517B826AB4AD62383 /* Pods_Revels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */; };
@@ -71,6 +72,7 @@
 		5D3FF89323B138E9007D9F7E /* MITGPX.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MITGPX.gpx; sourceTree = "<group>"; };
 		5D40D81D23B782C7002E3432 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = Revels/test.json; sourceTree = SOURCE_ROOT; };
 		5D924DE423AF73A10026DC4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5DAB4A8D23CB748300CF4090 /* mapTile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mapTile.json; path = ../../../../mapTile.json; sourceTree = "<group>"; };
 		5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		7A61659F94DD5DCA31B45E54 /* Pods-Revels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels/Pods-Revels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,8 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
-				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
+				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
 				5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */,
+				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
 				5D3FF89323B138E9007D9F7E /* MITGPX.gpx */,
 			);
 			path = Map;
@@ -423,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAB4A8E23CB748300CF4090 /* mapTile.json in Resources */,
 				B2CE700F22261FFC006828B9 /* l3.json in Resources */,
 				B275F71721CA1DFB000491ED /* LaunchScreen.storyboard in Resources */,
 				B2516B8522279B65008AA097 /* bubble.json in Resources */,
