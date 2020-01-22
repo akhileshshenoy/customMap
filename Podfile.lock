@@ -6,6 +6,7 @@ PODS:
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
+  - UBottomSheet (0.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - MapKitGoogleStyler
   - Pulley
   - SDWebImage
+  - UBottomSheet
 
 SPEC REPOS:
   trunk:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - MapKitGoogleStyler
     - Pulley
     - SDWebImage
+    - UBottomSheet
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   MapKitGoogleStyler: 8efdceb664fc1748a62a9e3b50a34b67a34247bc
   Pulley: 81301031e9b08c7b240fa47e8b5d76e00bb05530
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  UBottomSheet: adf006980cd6583c8be15967b1868b3b62936f7b
 
-PODFILE CHECKSUM: d21bb85412d71cf6d7c83e59b38eed80162fbb22
+PODFILE CHECKSUM: 6576a212bc290e6eb229ff1be03a84c84f68ddde
 
 COCOAPODS: 1.8.4

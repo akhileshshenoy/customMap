@@ -45,6 +45,6 @@ class MainTabBarController: UITabBarController {
         resultsNavigationController.tabBarItem = UITabBarItem(title: "Results", image: UIImage(named: "results"), tag: 3)
         
         //add to tab bar
-      
+     viewControllers = [mapViewController, typeNavigationController, schedulePageNavigationController, resultsNavigationController]
     }
 }

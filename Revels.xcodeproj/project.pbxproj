@@ -12,6 +12,7 @@
 		5D40D81E23B782C7002E3432 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D40D81D23B782C7002E3432 /* test.json */; };
 		5D924DE523AF73A10026DC4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D924DE423AF73A10026DC4D /* MapKit.framework */; };
 		5DAB4A8E23CB748300CF4090 /* mapTile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAB4A8D23CB748300CF4090 /* mapTile.json */; };
+		5DAFB95F23D8D0D100856EBA /* bottomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFB95E23D8D0D100856EBA /* bottomUI.swift */; };
 		5DE90C3C23C85AA6008DDFB8 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */; };
 		5DE90C3E23C85E00008DDFB8 /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */; };
 		AA6AEBB517B826AB4AD62383 /* Pods_Revels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */; };
@@ -73,6 +74,7 @@
 		5D40D81D23B782C7002E3432 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = Revels/test.json; sourceTree = SOURCE_ROOT; };
 		5D924DE423AF73A10026DC4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5DAB4A8D23CB748300CF4090 /* mapTile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mapTile.json; path = ../../../../mapTile.json; sourceTree = "<group>"; };
+		5DAFB95E23D8D0D100856EBA /* bottomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomUI.swift; sourceTree = "<group>"; };
 		5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		7A61659F94DD5DCA31B45E54 /* Pods-Revels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels/Pods-Revels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
 				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
 				5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */,
+				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
 				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
 				5D3FF89323B138E9007D9F7E /* MITGPX.gpx */,
 			);
@@ -513,6 +516,7 @@
 				B275F70D21CA1DFA000491ED /* AppDelegate.swift in Sources */,
 				B2516B81222794CF008AA097 /* LoadingOverlay.swift in Sources */,
 				B252280C2228A36200EF9A8D /* CategoryTableViewCell.swift in Sources */,
+				5DAFB95F23D8D0D100856EBA /* bottomUI.swift in Sources */,
 				B2943B6A2229852C0045D89F /* ResultsController.swift in Sources */,
 				B2522798222831B400EF9A8D /* ReaderOverlayView.swift in Sources */,
 				B25228062228A36200EF9A8D /* TypeController.swift in Sources */,

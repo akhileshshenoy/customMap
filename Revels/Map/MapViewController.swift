@@ -16,6 +16,7 @@ class MapViewController: UIViewController
 {
     var poi_coordinates = [String:CLLocationCoordinate2D]()
 
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class MapViewController: UIViewController
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
+        let btvc = LocationSearchTableViewController()
+        btvc.attach(to: self)
     }
     
     //*****Declarations*****//

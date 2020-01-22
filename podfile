@@ -10,6 +10,7 @@ target 'Revels' do
   pod 'lottie-ios'
   pod 'SDWebImage'
   pod 'Pulley'
+  pod 'UBottomSheet'
 
 pod "MapKitGoogleStyler"
 end

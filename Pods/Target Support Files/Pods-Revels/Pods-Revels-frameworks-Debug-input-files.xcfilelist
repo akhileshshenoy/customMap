@@ -3,4 +3,5 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/MapKitGoogleStyler/MapKitGoogleStyler.framework
 ${BUILT_PRODUCTS_DIR}/Pulley/Pulley.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/UBottomSheet/UBottomSheet.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework
