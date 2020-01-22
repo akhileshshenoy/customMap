@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import MapKitGoogleStyler
 
+
 class MapViewController: UIViewController
 {
     var poi_coordinates = [String:CLLocationCoordinate2D]()
@@ -23,7 +24,6 @@ class MapViewController: UIViewController
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
-        //setupDirection()
     }
     
     //*****Declarations*****//
@@ -66,7 +66,6 @@ class MapViewController: UIViewController
     }()
     
     let searchController:UISearchController? = nil
-    
     let suggestionTable = LocationSearchTableViewController()
     
     //*********Start of functions*********//

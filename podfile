@@ -9,6 +9,7 @@ target 'Revels' do
   pod 'Alamofire'
   pod 'lottie-ios'
   pod 'SDWebImage'
+  pod 'Pulley'
 
 pod "MapKitGoogleStyler"
 end

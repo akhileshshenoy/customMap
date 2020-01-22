@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.1)
   - lottie-ios (2.5.2)
   - MapKitGoogleStyler (0.1.1)
+  - Pulley (2.8.0)
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
@@ -10,6 +11,7 @@ DEPENDENCIES:
   - Alamofire
   - lottie-ios
   - MapKitGoogleStyler
+  - Pulley
   - SDWebImage
 
 SPEC REPOS:
@@ -17,14 +19,16 @@ SPEC REPOS:
     - Alamofire
     - lottie-ios
     - MapKitGoogleStyler
+    - Pulley
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   MapKitGoogleStyler: 8efdceb664fc1748a62a9e3b50a34b67a34247bc
+  Pulley: 81301031e9b08c7b240fa47e8b5d76e00bb05530
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
 
-PODFILE CHECKSUM: ec9a07abb2d61318772686a6ed60e75c25af3eee
+PODFILE CHECKSUM: d21bb85412d71cf6d7c83e59b38eed80162fbb22
 
 COCOAPODS: 1.8.4

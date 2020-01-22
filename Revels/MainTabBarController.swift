@@ -30,8 +30,8 @@ class MainTabBarController: UITabBarController {
         schedulePageNavigationController.tabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "schedule"), tag: 1)
         
         
-        let userViewController = UserController()
-        userViewController.tabBarItem = UITabBarItem(title: "Delegate ID", image: UIImage(named: "user"), tag: 0)
+       
+        
         
         //type page
         let typeController = TypeController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -45,6 +45,6 @@ class MainTabBarController: UITabBarController {
         resultsNavigationController.tabBarItem = UITabBarItem(title: "Results", image: UIImage(named: "results"), tag: 3)
         
         //add to tab bar
-        viewControllers = [mapViewController, typeNavigationController, userViewController, schedulePageNavigationController, resultsNavigationController]
+      
     }
 }
