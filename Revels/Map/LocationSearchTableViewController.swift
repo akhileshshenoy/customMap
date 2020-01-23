@@ -10,16 +10,16 @@ import UIKit
 import CoreLocation
 import UBottomSheet
 
-class LocationSearchTableViewController: BottomSheetController, UITableViewDelegate, UITableViewDataSource{
+class LocationSearchTableViewController: UITableViewController{
     
     
     
-    lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.delegate = self
-        tv.dataSource = self
-        return tv
-    }()
+//    lazy var tableView: UITableView = {
+//        let tv = UITableView()
+//        tv.delegate = self
+//        tv.dataSource = self
+//        return tv
+//    }()
 
     private let cellID = "cellID"
     var placeArray = [String]()
@@ -31,30 +31,30 @@ class LocationSearchTableViewController: BottomSheetController, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
        self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
-//        view.backgroundColor = .red
         
-        view.addSubview(tableView)
-        tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        tableView.register(LocationSearchTableViewCell.self, forCellReuseIdentifier: cellID)
+        
+//        view.addSubview(tableView)
+//        tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+//        tableView.register(LocationSearchTableViewCell.self, forCellReuseIdentifier: cellID)
 //        tableView.backgroundColor = UIColor.init(white: 1, alpha: 0.3)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self;
-        tableView.delegate = self;
-        tableView.separatorStyle = .singleLine
-        tableView.tableFooterView = UIView()
-       
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.dataSource = self;
+//        tableView.delegate = self;
+//        tableView.separatorStyle = .singleLine
+//        tableView.tableFooterView = UIView()
+//
         
     }
     
-    override var initialPosition: SheetPosition {
-        return .middle
-    }
+//    override var initialPosition: SheetPosition {
+//        return .middle
+//    }
 
     // MARK: - Table view data source
 
     
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if isSearching
         {
@@ -66,11 +66,11 @@ class LocationSearchTableViewController: BottomSheetController, UITableViewDeleg
         }
     }
     
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0) // To maintain gap between tableview and searchbar
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var place:String?
         if isSearching
         {
@@ -87,7 +87,7 @@ class LocationSearchTableViewController: BottomSheetController, UITableViewDeleg
         return cell
        }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         if isSearching == true
         {

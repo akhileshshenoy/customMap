@@ -25,7 +25,7 @@ class MapViewController: UIViewController
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
-        let btvc = LocationSearchTableViewController()
+        let btvc = bottomUI()
         btvc.attach(to: self)
     }
     
@@ -46,27 +46,27 @@ class MapViewController: UIViewController
         return map
     }()
     
-    let searchButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Search", for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 60, height: 50)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 5
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(searchPlaces), for: .touchUpInside)
-        return button
-      }()
-    
-    let myLocation: UIButton = {
-      let button = UIButton()
-      button.setTitle("My Location", for: .normal)
-      button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-      button.translatesAutoresizingMaskIntoConstraints = false
-      button.layer.cornerRadius = 5
-      button.setTitleColor(.systemBlue, for: .normal)
-      button.addTarget(self, action: #selector(currentLocation), for: .touchUpInside)
-      return button
-    }()
+//    let searchButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("Search", for: .normal)
+//        button.frame = CGRect(x: 0, y: 0, width: 60, height: 50)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.layer.cornerRadius = 5
+//        button.setTitleColor(.systemBlue, for: .normal)
+//        button.addTarget(self, action: #selector(searchPlaces), for: .touchUpInside)
+//        return button
+//      }()
+//
+//    let myLocation: UIButton = {
+//      let button = UIButton()
+//      button.setTitle("My Location", for: .normal)
+//      button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+//      button.translatesAutoresizingMaskIntoConstraints = false
+//      button.layer.cornerRadius = 5
+//      button.setTitleColor(.systemBlue, for: .normal)
+//      button.addTarget(self, action: #selector(currentLocation), for: .touchUpInside)
+//      return button
+//    }()
     
     let searchController:UISearchController? = nil
     let suggestionTable = LocationSearchTableViewController()
@@ -89,11 +89,11 @@ class MapViewController: UIViewController
         present(searchController,animated: true,completion: nil)
     }
     
-    @objc func currentLocation() {
-        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
-        let reg = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
-        self.mapKitView.animatedZoom(zoomRegion: reg, duration: 1 )
-    }
+//    @objc func currentLocation() {
+//        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
+//        let reg = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+//        self.mapKitView.animatedZoom(zoomRegion: reg, duration: 1 )
+//    }
     
     @objc func showDirection() {
         if currentPolylineOverlay.count != 0
@@ -168,17 +168,20 @@ class MapViewController: UIViewController
         let mapHeight:CGFloat = view.frame.size.height
         mapKitView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
         
-        view.addSubview(searchButton)
-        searchButton.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10).isActive = true
-        searchButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 42).isActive = true
-        searchButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        searchButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        let buttonItem = MKUserTrackingButton(mapView: mapKitView)
         
-        view.addSubview(myLocation)
-        myLocation.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10).isActive = true
-        myLocation.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        myLocation.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        myLocation.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        buttonItem.frame = CGRect(origin: CGPoint(x:335, y: 50), size: CGSize(width: 35, height: 35))
+        buttonItem.layer.cornerRadius = 5
+        buttonItem.backgroundColor = .white
+        
+        mapKitView.addSubview(buttonItem)
+
+        
+//        view.addSubview(myLocation)
+//        myLocation.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10).isActive = true
+//        myLocation.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+//        myLocation.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        myLocation.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func setuppoi()

@@ -160,9 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
+				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
 				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
 				5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */,
-				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
 				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
 				5D3FF89323B138E9007D9F7E /* MITGPX.gpx */,
 			);
