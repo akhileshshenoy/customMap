@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need this permission to display your location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -42,6 +40,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>The camera is needed to scan QR codes</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need this permission to display your location</string>
 	<key>ReCaptchaDomain</key>
 	<string>https://register.mitrevels.in</string>
 	<key>ReCaptchaKey</key>

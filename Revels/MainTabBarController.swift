@@ -13,7 +13,9 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.isTranslucent = false
-        
+        if #available(iOS 13.0, *) {
+        self.overrideUserInterfaceStyle = .dark
+        }
         //home page
 //        let homeViewController = HomeController(collectionViewLayout: StretchyHeaderLayout())
 //        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home"), tag: 0)

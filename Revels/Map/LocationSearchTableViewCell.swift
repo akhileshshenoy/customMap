@@ -17,20 +17,21 @@ class LocationSearchTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        setupViews()
+        //setupViews()
         // Configure the view for the selected state
     }
     
-    var placeLabel: UILabel = {
-        let label = UILabel()
-        return UILabel()
-    }()
+//    var placeLabel: UILabel = {
+//        let label = UILabel()
+//        label.textColor = .white
+//        return UILabel()
+//    }()
     
     func setupViews() {
-    
-    addSubview(placeLabel)
-    placeLabel.textAlignment = .left
-        placeLabel.textColor = .black
-    placeLabel.frame = CGRect(x: 25, y: 0, width: frame.width/3, height: frame.height)
+    //self.backgroundColor = .black
+   // addSubview(placeLabel)
+//    placeLabel.textAlignment = .left
+//    placeLabel.textColor = .black
+//    placeLabel.frame = CGRect(x: 25, y: 0, width: frame.width/3, height: frame.height)
     }
 }

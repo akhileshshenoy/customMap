@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0F556223DAB8E700C0A2A8 /* TagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F556123DAB8E700C0A2A8 /* TagsController.swift */; };
+		5D0F556423DAB9E700C0A2A8 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F556323DAB9E700C0A2A8 /* TagCell.swift */; };
 		5D36FEF623AE30B000B9078D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D36FEF523AE30B000B9078D /* MapViewController.swift */; };
 		5D3FF89423B138E9007D9F7E /* MITGPX.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FF89323B138E9007D9F7E /* MITGPX.gpx */; };
 		5D40D81E23B782C7002E3432 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D40D81D23B782C7002E3432 /* test.json */; };
@@ -69,6 +71,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D0F556123DAB8E700C0A2A8 /* TagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsController.swift; sourceTree = "<group>"; };
+		5D0F556323DAB9E700C0A2A8 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		5D36FEF523AE30B000B9078D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5D3FF89323B138E9007D9F7E /* MITGPX.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MITGPX.gpx; sourceTree = "<group>"; };
 		5D40D81D23B782C7002E3432 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = Revels/test.json; sourceTree = SOURCE_ROOT; };
@@ -162,6 +166,8 @@
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
 				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
 				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
+				5D0F556123DAB8E700C0A2A8 /* TagsController.swift */,
+				5D0F556323DAB9E700C0A2A8 /* TagCell.swift */,
 				5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */,
 				5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */,
 				5D3FF89323B138E9007D9F7E /* MITGPX.gpx */,
@@ -494,7 +500,9 @@
 				B2522792222831B400EF9A8D /* QRCodeReaderViewControllerBuilder.swift in Sources */,
 				B23AFC2221EA01E500DAF0DD /* MainTabBarController.swift in Sources */,
 				B25228092228A36200EF9A8D /* ModelCategory.swift in Sources */,
+				5D0F556223DAB8E700C0A2A8 /* TagsController.swift in Sources */,
 				B2522794222831B400EF9A8D /* QRCodeReaderResult.swift in Sources */,
+				5D0F556423DAB9E700C0A2A8 /* TagCell.swift in Sources */,
 				B2522790222831B400EF9A8D /* QRCodeReaderViewControllerDelegate.swift in Sources */,
 				B25227C6222883B000EF9A8D /* DetailsCell.swift in Sources */,
 				B264641021F21A81008A6C3C /* Extensions+UIView.swift in Sources */,
@@ -685,7 +693,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.namajain.mit.Revels;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akhilesh.mit.Revels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -707,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.namajain.mit.Revels;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akhilesh.mit.Revels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

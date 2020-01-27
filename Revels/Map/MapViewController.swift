@@ -15,26 +15,40 @@ import MapKitGoogleStyler
 class MapViewController: UIViewController
 {
     var poi_coordinates = [String:CLLocationCoordinate2D]()
-
+    let btvc = bottomUI()
+    var poi_array = [poi]()
+    var annotationArray = [MKPointAnnotation]()
+    //var currentTag:String = ""
+    var annotationImage:UIImage? = nil
+    
+    struct poi {
+        var locationName:String
+        var locationCoordinates:CLLocationCoordinate2D
+        var directionCoordinates:CLLocationCoordinate2D
+        var tagCategory:String
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        configureTileOverlay()
-        setuppoi()
+        //configureTileOverlay()
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
-        let btvc = bottomUI()
+        if #available(iOS 13.0, *) {
+        self.overrideUserInterfaceStyle = .dark
+        }
+
+        btvc.suggestionTable.handleMapSearchDelegate = self
         btvc.attach(to: self)
     }
-    
+
     //*****Declarations*****//
     let annotation = MKPointAnnotation()
     var polyline = MKPolyline()
     var currentPolylineOverlay = [MKPolyline]()
     let locationManager = CLLocationManager()
-    
+
     let mapKitView:MKMapView={
         let map = MKMapView()
         map.mapType = MKMapType.standard
@@ -42,10 +56,11 @@ class MapViewController: UIViewController
         map.isPitchEnabled = true
         map.isZoomEnabled = true
         map.isScrollEnabled = true
-        map.showsPointsOfInterest = false
+        map.showsPointsOfInterest = true
+        map.showsBuildings = true
         return map
     }()
-    
+
 //    let searchButton: UIButton = {
 //        let button = UIButton()
 //        button.setTitle("Search", for: .normal)
@@ -67,57 +82,57 @@ class MapViewController: UIViewController
 //      button.addTarget(self, action: #selector(currentLocation), for: .touchUpInside)
 //      return button
 //    }()
-    
-    let searchController:UISearchController? = nil
-    let suggestionTable = LocationSearchTableViewController()
-    
+
+//    let searchController:UISearchController? = nil
+//    let suggestionTable = LocationSearchTableViewController()
+
     //*********Start of functions*********//
-    
-    @objc func searchPlaces() {
-        if currentPolylineOverlay.count != 0
-        {
-            mapKitView.removeOverlays(currentPolylineOverlay)
-            currentPolylineOverlay.removeAll()
-        }
-        let searchController = UISearchController(searchResultsController: self.suggestionTable)
-        searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = suggestionTable
-        //searchController.searchBar.showsCancelButton = false
-        //searchController.searchBar.scopeButtonTitles = ["All", "Sports", "Buildings", "Food"]
-        
-        suggestionTable.handleMapSearchDelegate = self
-        present(searchController,animated: true,completion: nil)
-    }
-    
+
+//    @objc func searchPlaces() {
+//        if currentPolylineOverlay.count != 0
+//        {
+//            mapKitView.removeOverlays(currentPolylineOverlay)
+//            currentPolylineOverlay.removeAll()
+//        }
+//        let searchController = UISearchController(searchResultsController: self.suggestionTable)
+//        searchController.searchBar.delegate = self
+//        searchController.searchResultsUpdater = suggestionTable
+//        //searchController.searchBar.showsCancelButton = false
+//        //searchController.searchBar.scopeButtonTitles = ["All", "Sports", "Buildings", "Food"]
+//
+//        suggestionTable.handleMapSearchDelegate = self
+//        present(searchController,animated: true,completion: nil)
+//    }
+
 //    @objc func currentLocation() {
 //        let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
 //        let reg = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
 //        self.mapKitView.animatedZoom(zoomRegion: reg, duration: 1 )
 //    }
-    
-    @objc func showDirection() {
+
+    @objc func showDirection(to:CLLocationCoordinate2D) {
         if currentPolylineOverlay.count != 0
         {
             mapKitView.removeOverlays(currentPolylineOverlay)
             currentPolylineOverlay.removeAll()
         }
-        
+
         let sC = (locationManager.location?.coordinate)!
-        let dC = annotation.coordinate
-        
+        let dC = to
+
         let sP = MKPlacemark(coordinate: sC)
         let dP = MKPlacemark(coordinate: dC)
-        
+
         let sI = MKMapItem(placemark: sP)
         let dI = MKMapItem(placemark: dP)
-        
+
         let directionRequest = MKDirections.Request()
         directionRequest.source = sI
         directionRequest.destination = dI
         directionRequest.transportType = .walking
-        
+
         let direction = MKDirections(request: directionRequest)
-        
+
         direction.calculate(completionHandler: {
             res,err in
             guard let res = res else {
@@ -126,7 +141,7 @@ class MapViewController: UIViewController
                 }
                 return
             }
-            
+
             let route  = res.routes[0]
             self.polyline = route.polyline
             self.currentPolylineOverlay.append(self.polyline)
@@ -135,91 +150,90 @@ class MapViewController: UIViewController
             self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
         })
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        dismiss(animated: false, completion: nil)
-        
-        if searchBar.text == "Ab5"
-        {
-            let latitude = 13.353657
-            let longitude = 74.793580
-            
-            let annotation = MKPointAnnotation()
-            annotation.title = "AB5"
-            annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-            self.mapKitView.addAnnotation(annotation)
-            annotation.subtitle = "abc"
-            let crd:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
-            let reg = MKCoordinateRegion(center: crd, span: span)
-            self.mapKitView.setRegion(reg, animated: true)
-        }
-    }
-  
-    
+
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        dismiss(animated: false, completion: nil)
+//
+//        if searchBar.text == "Ab5"
+//        {
+//            let latitude = 13.353657
+//            let longitude = 74.793580
+//
+//            let annotation = MKPointAnnotation()
+//            annotation.title = "AB5"
+//            annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+//            self.mapKitView.addAnnotation(annotation)
+//            annotation.subtitle = "abc"
+//            let crd:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+//            let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
+//            let reg = MKCoordinateRegion(center: crd, span: span)
+//            self.mapKitView.setRegion(reg, animated: true)
+//        }
+//    }
+
+
     func setupView()
     {
         view.addSubview(mapKitView)
-        
+
         let leftMargin:CGFloat = 0
         let topMargin:CGFloat = view.safeAreaInsets.top
         let mapWidth:CGFloat = view.frame.size.width
         let mapHeight:CGFloat = view.frame.size.height
         mapKitView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
-        
-        let buttonItem = MKUserTrackingButton(mapView: mapKitView)
-        
-        buttonItem.frame = CGRect(origin: CGPoint(x:335, y: 50), size: CGSize(width: 35, height: 35))
-        buttonItem.layer.cornerRadius = 5
-        buttonItem.backgroundColor = .white
-        
-        mapKitView.addSubview(buttonItem)
 
-        
+        let buttonItem = MKUserTrackingButton(mapView: mapKitView)
+        buttonItem.frame = CGRect(origin: CGPoint(x:view.frame.width-65, y: 80), size: CGSize(width: 45, height: 45))
+        buttonItem.layer.cornerRadius = 5
+        buttonItem.backgroundColor = .black
+        mapKitView.addSubview(buttonItem)
+        mapKitView.showsCompass = false
+
+
 //        view.addSubview(myLocation)
 //        myLocation.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10).isActive = true
 //        myLocation.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
 //        myLocation.widthAnchor.constraint(equalToConstant: 100).isActive = true
 //        myLocation.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-    
-    func setuppoi()
-    {
-        poi_coordinates["Quadrangle"] = CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803)
-        poi_coordinates["AB2"] = CLLocationCoordinate2D(latitude: 13.352500, longitude:74.793622)
-        poi_coordinates["NLH"] = CLLocationCoordinate2D(latitude: 13.351440, longitude:74.792906)
-        poi_coordinates["IC"] = CLLocationCoordinate2D(latitude: 13.351446, longitude: 74.792579)
-        poi_coordinates["AB5"] = CLLocationCoordinate2D(latitude: 13.353478, longitude:74.793458)
-        poi_coordinates["Food Stalls"] = CLLocationCoordinate2D(latitude: 13.351776, longitude: 74.791795)
-        poi_coordinates["SP"] = CLLocationCoordinate2D(latitude: 13.347488, longitude: 74.793315)
-        poi_coordinates["MIT Cricket Ground"] = CLLocationCoordinate2D(latitude: 13.343935, longitude: 74.794053)
-        poi_coordinates["MIT Football Ground"] = CLLocationCoordinate2D(latitude: 13.342734, longitude: 74.793286)
-//        poi_coordinates["MIT Football Ground"] = CLLocationCoordinate2D(latitude: 13.343942, longitude: 74.792991)
-        poi_coordinates["FC 1"] = CLLocationCoordinate2D(latitude: 13.347706, longitude: 74.794204)
-        let c = poi_coordinates.keys.sorted()
-        for i in c{
-            suggestionTable.placeArray.append(String(i))
-        }
-        //suggestionTable.poi_coordinates = self.poi_coordinates
-    }
-    
+
+//    func setuppoi()
+//    {
+//        poi_coordinates["Quadrangle"] = CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803)
+//        poi_coordinates["AB2"] = CLLocationCoordinate2D(latitude: 13.352500, longitude:74.793622)
+//        poi_coordinates["NLH"] = CLLocationCoordinate2D(latitude: 13.351440, longitude:74.792906)
+//        poi_coordinates["IC"] = CLLocationCoordinate2D(latitude: 13.351446, longitude: 74.792579)
+//        poi_coordinates["AB5"] = CLLocationCoordinate2D(latitude: 13.353478, longitude:74.793458)
+//        poi_coordinates["Food Stalls"] = CLLocationCoordinate2D(latitude: 13.351776, longitude: 74.791795)
+//        poi_coordinates["SP"] = CLLocationCoordinate2D(latitude: 13.347488, longitude: 74.793315)
+//        poi_coordinates["MIT Cricket Ground"] = CLLocationCoordinate2D(latitude: 13.343935, longitude: 74.794053)
+//        poi_coordinates["MIT Football Ground"] = CLLocationCoordinate2D(latitude: 13.342734, longitude: 74.793286)
+////        poi_coordinates["MIT Football Ground"] = CLLocationCoordinate2D(latitude: 13.343942, longitude: 74.792991)
+//        poi_coordinates["FC 1"] = CLLocationCoordinate2D(latitude: 13.347706, longitude: 74.794204)
+//        let c = poi_coordinates.keys.sorted()
+//        for i in c{
+//            suggestionTable.placeArray.append(String(i))
+//        }
+//        //suggestionTable.poi_coordinates = self.poi_coordinates
+//    }
+
     func setupLocationManager()
     {
         locationManager.delegate=self
         locationManager.desiredAccuracy=kCLLocationAccuracyBest
     }
-    
+
     func centreViewOnUserLocation()
     {
         if let location = locationManager.location?.coordinate
         {
-           
+
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 200, longitudinalMeters: 200)
             mapKitView.setRegion(region, animated: true)
         }
     }
-    
+
     func checkLocationServices()
     {
         if CLLocationManager.locationServicesEnabled()
@@ -233,14 +247,14 @@ class MapViewController: UIViewController
             //show alert
         }
     }
-    
+
     func checkLocationAuthorization()
     {
         switch CLLocationManager.authorizationStatus()
         {
             case .authorizedWhenInUse:
                 print(1)
-               
+
                 mapKitView.showsUserLocation = true
                 locationManager.startUpdatingLocation()
                 centreViewOnUserLocation()
@@ -268,16 +282,16 @@ class MapViewController: UIViewController
             print("Unknown Error")
         }
     }
-    
-    //NLH annotation
-    func addAnn()
-    {
-        let NLH = MKPointAnnotation()
-        NLH.title = "NLH"
-        NLH.coordinate = CLLocationCoordinate2D(latitude: 13.351374, longitude: 74.792903)
-        mapKitView.addAnnotation(NLH)
-    }
-    
+
+//    //NLH annotation
+//    func addAnn()
+//    {
+//        let NLH = MKPointAnnotation()
+//        NLH.title = "NLH"
+//        NLH.coordinate = CLLocationCoordinate2D(latitude: 13.351374, longitude: 74.792903)
+//        mapKitView.addAnnotation(NLH)
+//    }
+
     //For custom tile from google
     private func configureTileOverlay()
     {
@@ -292,59 +306,60 @@ class MapViewController: UIViewController
         // And finally add it to your MKMapView
         mapKitView.addOverlay(tileOverlay, level: .aboveLabels)
     }
-    
-    func setupDirection()
-    {
-        let sC = (locationManager.location?.coordinate)!
-        let dC = CLLocationCoordinate2DMake(13.344705, 74.793340)
-        
-        let sP = MKPlacemark(coordinate: sC)
-        let dP = MKPlacemark(coordinate: dC)
-        
-        let sI = MKMapItem(placemark: sP)
-        let dI = MKMapItem(placemark: dP)
-        
-        let directionRequest = MKDirections.Request()
-        directionRequest.source = sI
-        directionRequest.destination = dI
-        directionRequest.transportType = .walking
-        
-        let direction = MKDirections(request: directionRequest)
-        
-        direction.calculate(completionHandler: {
-            res,err in
-            guard let res = res else {
-                if let err = err {
-                    print(err)
-                }
-                return
-            }
-            
-            let route  = res.routes[0]
-            self.mapKitView.addOverlay(route.polyline, level: .aboveRoads)
-            let rekt = route.polyline.boundingMapRect
-            self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
-        })
-    }
+
+//    func setupDirection()
+//    {
+//        let sC = (locationManager.location?.coordinate)!
+//        let dC = CLLocationCoordinate2DMake(13.344705, 74.793340)
+//
+//        let sP = MKPlacemark(coordinate: sC)
+//        let dP = MKPlacemark(coordinate: dC)
+//
+//        let sI = MKMapItem(placemark: sP)
+//        let dI = MKMapItem(placemark: dP)
+//
+//        let directionRequest = MKDirections.Request()
+//        directionRequest.source = sI
+//        directionRequest.destination = dI
+//        directionRequest.transportType = .walking
+//
+//        let direction = MKDirections(request: directionRequest)
+//
+//        direction.calculate(completionHandler: {
+//            res,err in
+//            guard let res = res else {
+//                if let err = err {
+//                    print(err)
+//                }
+//                return
+//            }
+//
+//            let route  = res.routes[0]
+//            self.mapKitView.addOverlay(route.polyline, level: .aboveRoads)
+//            let rekt = route.polyline.boundingMapRect
+//            self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
+//        })
+//    }
 }
 
 extension MapViewController:CLLocationManagerDelegate
 {
+    //for changing marker as user moves
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        guard let location = locations.last else {return}
-        let centre = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion.init(center: centre, latitudinalMeters: 300, longitudinalMeters: 300)
-        mapKitView.setRegion(region, animated: true)
+//        guard let location = locations.last else {return}
+//        let centre = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        let region = MKCoordinateRegion.init(center: centre, latitudinalMeters: 300, longitudinalMeters: 300)
+//        mapKitView.setRegion(region, animated: true)
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
         checkLocationAuthorization()
     }
 }
 
-extension MapViewController:MKMapViewDelegate,UISearchBarDelegate{
+extension MapViewController:MKMapViewDelegate{
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
@@ -364,73 +379,134 @@ extension MapViewController:MKMapViewDelegate,UISearchBarDelegate{
            return MKOverlayRenderer(overlay: overlay)
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         guard annotation is MKPointAnnotation else { return nil }
 
         let identifier = "Annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
         
+
         if annotationView == nil
         {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true
             
+           
         }
         else
         {
             annotationView!.annotation = annotation
+            
         }
-        let annotationButton = UIButton(type: .infoLight)
-        annotationButton.tag = annotation.hash
-        annotationButton.addTarget(self, action: #selector(showDirection), for: .touchUpInside)
-        annotationView!.rightCalloutAccessoryView = annotationButton
+        
+        
+        
+        for i in poi_array
+        {
+            if i.locationName == annotation.title
+            {
+                annotationImage = UIImage(named: i.tagCategory)
+            }
+        }
+        print(annotationImage)
+        annotationView?.image = annotationImage
+        
 
+//        let annotationButton = UIButton(type: .infoLight)
+//        annotationButton.tag = annotation.hash
+//        annotationView!.rightCalloutAccessoryView = annotationButton
+        
         return annotationView
     }
 
 }
 
-extension MapViewController:UISearchResultsUpdating
-{
-    func updateSearchResults(for searchController: UISearchController) {
-        //
-    }
-    
-    
-}
+
 
 protocol HandleMapSearch
 {
-    func zoomToPlace(place:String)
+    func zoomToPlace(name:String,location:CLLocationCoordinate2D)
+    func addAnn(locationName:String,locationCoordinate:CLLocationCoordinate2D,directionCoordinate:CLLocationCoordinate2D,tagName:String)
+    func addAnnOfTag(tag:String)
 }
 
 extension MapViewController:HandleMapSearch
 {
-    func zoomToPlace(place: String) {
-        dismiss(animated: true, completion: nil)
-        if annotation.title != ""
-        {
-            mapKitView.removeAnnotation(annotation)
-        }
-        guard let placeCoordinates = poi_coordinates[place] else {return}
-        let latitude = placeCoordinates.latitude
-        let longitude = placeCoordinates.longitude
+    func addAnn(locationName: String, locationCoordinate: CLLocationCoordinate2D, directionCoordinate: CLLocationCoordinate2D, tagName: String) {
+        poi_array.append(poi(locationName: locationName, locationCoordinates: locationCoordinate, directionCoordinates: directionCoordinate, tagCategory: tagName))
+    }
+    
+    func zoomToPlace(name:String, location: CLLocationCoordinate2D) {
+        //dismiss(animated: true, completion: nil)
+        btvc.changePosition(to: .bottom)
+        mapKitView.removeAnnotations(annotationArray)
+        annotationArray.removeAll()
+        
+
+        let latitude = location.latitude
+        let longitude = location.longitude
         let crd:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let reg = MKCoordinateRegion(center: crd, span: span)
+
+        annotation.title = name
         
-        annotation.title = place
-        annotation.coordinate = placeCoordinates
+        annotation.coordinate = location
+        annotationArray.append(annotation)
         mapKitView.addAnnotation(annotation)
         //self.mapKitView.setRegion(reg, animated: true)
         self.mapKitView.animatedZoom(zoomRegion: reg, duration: 1 )
     }
+    
+    func addAnnOfTag(tag: String) {
+        mapKitView.removeAnnotations(annotationArray)
+        annotationArray.removeAll()
+            
+        if tag == "All"
+        {
+            for i in poi_array
+                {
+                    let latitude = i.locationCoordinates.latitude
+                    let longitude = i.locationCoordinates.longitude
+                    let location = CLLocationCoordinate2DMake(latitude, longitude)
+                    
+                    let tempAnnotation = MKPointAnnotation()
+                    tempAnnotation.title = i.locationName
+                    tempAnnotation.coordinate = location
+                    
+                    annotationArray.append(tempAnnotation)
+                   
+                    mapKitView.addAnnotation(tempAnnotation)
+                }
+        }
+        else
+        {
+            for i in poi_array
+            {
+                if i.tagCategory == tag
+                {
+                    let latitude = i.locationCoordinates.latitude
+                    let longitude = i.locationCoordinates.longitude
+                    let location = CLLocationCoordinate2DMake(latitude, longitude)
+
+                    let tempAnnotation1 = MKPointAnnotation()
+                    tempAnnotation1.title = i.locationName
+                    tempAnnotation1.coordinate = location
+                    
+                    annotationArray.append(tempAnnotation1)
+                    
+                    mapKitView.addAnnotation(tempAnnotation1)
+                }
+            }
+        }
+        let region = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: 13.347488, longitude: 74.793315), latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapKitView.setRegion(region, animated: true)
+    }
 }
-    
-    
+
+
 
 
 //For animating from one region to another
