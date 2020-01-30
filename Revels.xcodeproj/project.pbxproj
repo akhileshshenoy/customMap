@@ -17,6 +17,7 @@
 		5DAFB95F23D8D0D100856EBA /* bottomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFB95E23D8D0D100856EBA /* bottomUI.swift */; };
 		5DE90C3C23C85AA6008DDFB8 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */; };
 		5DE90C3E23C85E00008DDFB8 /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */; };
+		5DF2637D23E1DF0D00D2A2AB /* placeInfoUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2637C23E1DF0D00D2A2AB /* placeInfoUI.swift */; };
 		AA6AEBB517B826AB4AD62383 /* Pods_Revels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */; };
 		B218149B220318F600709C27 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218149A220318F600709C27 /* Model.swift */; };
 		B23AFC2021E9D5D200DAF0DD /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23AFC1F21E9D5D200DAF0DD /* EventCell.swift */; };
@@ -81,6 +82,7 @@
 		5DAFB95E23D8D0D100856EBA /* bottomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomUI.swift; sourceTree = "<group>"; };
 		5DE90C3B23C85AA6008DDFB8 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		5DE90C3D23C85E00008DDFB8 /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
+		5DF2637C23E1DF0D00D2A2AB /* placeInfoUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeInfoUI.swift; sourceTree = "<group>"; };
 		7A61659F94DD5DCA31B45E54 /* Pods-Revels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Revels/Pods-Revels.debug.xcconfig"; sourceTree = "<group>"; };
 		AF23DC55C171C0D5D2F15F5E /* Pods_Revels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Revels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B218149A220318F600709C27 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
 				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
+				5DF2637C23E1DF0D00D2A2AB /* placeInfoUI.swift */,
 				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
 				5D0F556123DAB8E700C0A2A8 /* TagsController.swift */,
 				5D0F556323DAB9E700C0A2A8 /* TagCell.swift */,
@@ -496,6 +499,7 @@
 			files = (
 				B252280B2228A36200EF9A8D /* TypeCell.swift in Sources */,
 				B25228072228A36200EF9A8D /* CategoryController.swift in Sources */,
+				5DF2637D23E1DF0D00D2A2AB /* placeInfoUI.swift in Sources */,
 				B23AFC2021E9D5D200DAF0DD /* EventCell.swift in Sources */,
 				B2522792222831B400EF9A8D /* QRCodeReaderViewControllerBuilder.swift in Sources */,
 				B23AFC2221EA01E500DAF0DD /* MainTabBarController.swift in Sources */,

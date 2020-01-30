@@ -30,6 +30,7 @@ class LocationSearchTableViewController: UITableViewController{
         tableView.dataSource = self
         self.view.backgroundColor = .black
         tableView.tableFooterView = UIView()
+        
         //self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
     }
     
@@ -66,7 +67,7 @@ class LocationSearchTableViewController: UITableViewController{
             filteredArray.sort()
         }
         handleMapSearchDelegate?.addAnnOfTag(tag: tag)
-        tableView.reloadData()
+        tableView.reloadData(with: .automatic)
     }
     
     func setuppoi()
@@ -183,3 +184,9 @@ class LocationSearchTableViewController: UITableViewController{
 //    }
 //}
 
+extension UITableView {
+    func reloadData(with animation: UITableView.RowAnimation) {
+        
+        reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
+    }
+}

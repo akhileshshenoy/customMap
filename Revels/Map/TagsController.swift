@@ -52,11 +52,13 @@ class TagsController: UICollectionViewController, UICollectionViewDelegateFlowLa
             layout.minimumLineSpacing = -8
             layout.minimumInteritemSpacing = -8
         }
-        
         collectionView.showsHorizontalScrollIndicator = false
-
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tags.count
     }

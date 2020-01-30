@@ -49,6 +49,7 @@ class bottomUI: BottomSheetController
 //        return hview
 //    }()
     
+    
     fileprivate func setupLayout() {
         let layer = CAShapeLayer()
         layer.path = UIBezierPath(roundedRect: CGRect(x: view.frame.width/2-20 , y: 7.5, width: 40, height: 5), cornerRadius: 50).cgPath
@@ -65,9 +66,7 @@ class bottomUI: BottomSheetController
         view.addSubview(suggestionTableView)
         suggestionTableView.backgroundColor = .black
         _ = suggestionTableView.anchor(top: tagsView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        
-        
-        
+
     }
     //MARK:upto here
    
@@ -77,7 +76,9 @@ class bottomUI: BottomSheetController
         super.viewDidLoad()
         self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
         view.backgroundColor = .black
+        suggestionTable.tag = "All"
     }
+
         //suggestionTable.handleMapSearchDelegate = MapViewController()
         
 //        let searchController = UISearchController(searchResultsController: suggestionTable)
@@ -108,8 +109,6 @@ class bottomUI: BottomSheetController
     override var initialPosition: SheetPosition {
         return .bottom
     }
-    
-    
 }
 
 
