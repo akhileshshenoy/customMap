@@ -15,6 +15,8 @@ class placeInfoUI: BottomSheetController
     public var imageView = UIImageView()
     public var name = "" {didSet{
         nameLabel.text = name
+        changePosition(to: .middle)
+        //imageView.image = UIImage(named: name)
         }}
     var handleMapSearchDelegate:HandleMapSearch? = nil
     let nameLabel : UILabel = {
@@ -47,7 +49,7 @@ class placeInfoUI: BottomSheetController
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = #colorLiteral(red: 0.0628238342, green: 0.0628238342, blue: 0.0628238342, alpha: 1)
         button.addTarget(self, action: #selector(showDirection), for: .touchUpInside)
         return button
     }()
@@ -58,7 +60,7 @@ class placeInfoUI: BottomSheetController
            button.translatesAutoresizingMaskIntoConstraints = false
            button.layer.cornerRadius = 10
            button.clipsToBounds = true
-           button.backgroundColor = .systemBlue
+           button.backgroundColor = #colorLiteral(red: 0.0628238342, green: 0.0628238342, blue: 0.0628238342, alpha: 1)
            button.addTarget(self, action: #selector(showNavigation), for: .touchUpInside)
            return button
        }()
@@ -94,7 +96,7 @@ class placeInfoUI: BottomSheetController
         navigationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         imageView  = UIImageView(frame:CGRect.init(x: 25, y: 190, width: view.bounds.maxX-50, height: 250));
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
 //        imageView.image = UIImage(named:"sp.jpg")
         self.view.addSubview(imageView)
@@ -103,6 +105,12 @@ class placeInfoUI: BottomSheetController
     
     @objc func handleClose()
     {
+//        let transition = CATransition()
+//        transition.duration = 0.5
+//        transition.type = CATransitionType.push
+//        transition.subtype = CATransitionSubtype.fromTop
+//        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+//        self.view.window!.layer.add(transition, forKey: kCATransition)
         self.detach()
         self.isLoaded = 0
         handleMapSearchDelegate?.removeDirection()
@@ -121,6 +129,7 @@ class placeInfoUI: BottomSheetController
     }
     
     override func viewDidLoad() {
+    
         setupLayout()
         nameLabel.text = "Manipal Institute of Technology"
         super.viewDidLoad()

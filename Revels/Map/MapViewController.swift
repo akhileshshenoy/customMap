@@ -19,7 +19,7 @@ class MapViewController: UIViewController
     let placeVC = placeInfoUI()
     var ann:MKAnnotationView? = nil
     var currentUI = 0; //to switch btw btvc and placeVC
-    var poi_array = [poi]()
+    var poi_array = [String:poi]()
     var annotationArray = [MKPointAnnotation]()
     var annotationImage:UIImage? = nil
     var polyline = MKPolyline()
@@ -52,15 +52,11 @@ class MapViewController: UIViewController
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
-        
+        addAnnOfTag(tag: "All")
     }
 
     func setupView()
     {
-//        if #available(iOS 13.0, *) {
-//        self.overrideUserInterfaceStyle = .dark
-//        }
-        
         view.addSubview(mapKitView)
         let leftMargin:CGFloat = 0
         let topMargin:CGFloat = view.safeAreaInsets.top
@@ -74,13 +70,11 @@ class MapViewController: UIViewController
         buttonItem.backgroundColor = .black
         mapKitView.addSubview(buttonItem)
         mapKitView.showsCompass = false
-        
+
         btvc.suggestionTable.handleMapSearchDelegate = self
-        //placeVC.attach(to: self)
         btvc.attach(to: self)
         placeVC.handleMapSearchDelegate = self
-       zoomMap(byFactor: 1)
-        
+        zoomMap(byFactor: 1)
     }
 
     func checkLocationServices()
@@ -142,8 +136,8 @@ class MapViewController: UIViewController
                 locationManager.startUpdatingLocation()
                 centreViewOnUserLocation()
                 break
-        @unknown default:
-            print("Unknown Error")
+            @unknown default:
+                print("Unknown Error")
         }
     }
     
@@ -168,15 +162,6 @@ class MapViewController: UIViewController
 
 extension MapViewController:CLLocationManagerDelegate
 {
-    //for changing marker as user moves
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-//        guard let location = locations.last else {return}
-//        let centre = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion.init(center: centre, latitudinalMeters: 300, longitudinalMeters: 300)
-//        mapKitView.setRegion(region, animated: true)
-    }
-
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
         checkLocationAuthorization()
@@ -203,99 +188,57 @@ extension MapViewController:MKMapViewDelegate{
            return MKOverlayRenderer(overlay: overlay)
         }
     }
-
-//    func switchUI() {
-//        if currentUI == 0
-//        {
-//            btvc.detach()
-//            placeVC.attach(to: self)
-//            currentUI = 1;
-//        }
-//        else
-//        {
-//            placeVC.detach()
-//            btvc.attach(to: self)
-//            currentUI = 0;
-//        }
-//    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         guard annotation is MKPointAnnotation else { return nil }
-
+    
         let identifier = "Annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        var imgName = ""
-        if annotationView == nil{
+
             let x  = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            
-//            for i in poi_array
-//            {
-//                if i.locationName == annotationView?.annotation?.title
-//                {
-//                    imgName = "Buildings"
-//                }
-//
-//            }
-            imgName = "Buildings"
-            x.glyphImage = UIImage(named: imgName)
+            x.glyphImage = UIImage(named: poi_array[annotation.title!!]!.tagCategory)
             x.glyphTintColor = .black
-           // annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            x.animatesWhenAdded = true
             annotationView = x
+        
             annotationView?.displayPriority = .required
             annotationView!.canShowCallout = true
             annotationView?.annotation = annotation
-        }
-//        else
-//        {
-//            annotationView!.annotation = annotation
-//            annotationView!.canShowCallout = true
-//            annotationView?.displayPriority = .required
-//        }
-        
-//        for i in poi_array
-//        {
-//            if i.locationName == annotation.title
-//            {
-//                annotationImage = UIImage(named: i.tagCategory)
-//            }
-//        }
-        //annotationView?.image = annotationImage
+
         return annotationView
     }
     
-//    func delaySomething(annotation )
-    
+//    func delaySomething(annotation)
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         var nam = ""
-        //btvc.detach()
         nam = ((view.annotation?.title)!)!
         ann = view
         btvc.changePosition(to: .bottom)
-         if currentPolylineOverlay.count != 0
+        if (UIImage(named: nam) != nil) {
+                  placeVC.imageView.image = UIImage(named:nam)
+              }
+              else {
+                placeVC.imageView.image = UIImage(named:"SP")
+              }
+        if currentPolylineOverlay.count != 0
                {
                    mapKitView.removeOverlays(currentPolylineOverlay)
                    currentPolylineOverlay.removeAll()
                }
-        guard let img = view.annotation?.title else {return}
-        if (UIImage(named: img!) != nil) {
-            placeVC.imageView.image = UIImage(named:img!)
-        }
-        else {
-          placeVC.imageView.image = UIImage(named:"SP")
-        }
+
         if placeVC.isLoaded == 0
         {
             placeVC.attach(to: self)
             placeVC.isLoaded = 1
             placeVC.name = nam
-            placeVC.changePosition(to: .middle)
+            //placeVC.changePosition(to: .middle)
         }
         else
         {
             placeVC.name = nam
             placeVC.isLoaded = 1
-            placeVC.changePosition(to: .middle)
+           // placeVC.changePosition(to: .middle)
         }
     }
     
@@ -305,8 +248,6 @@ extension MapViewController:MKMapViewDelegate{
         placeVC.isLoaded = 0
     }
 }
-
-
 
 protocol HandleMapSearch
 {
@@ -321,7 +262,7 @@ protocol HandleMapSearch
 extension MapViewController:HandleMapSearch
 {
     func addAnn(locationName: String, locationCoordinate: CLLocationCoordinate2D, directionCoordinate: CLLocationCoordinate2D, tagName: String) {
-        poi_array.append(poi(locationName: locationName, locationCoordinates: locationCoordinate, directionCoordinates: directionCoordinate, tagCategory: tagName))
+        poi_array[locationName]=poi(locationName: locationName, locationCoordinates: locationCoordinate, directionCoordinates: directionCoordinate, tagCategory: tagName)
     }
     
     func zoomToPlace(name:String, location: CLLocationCoordinate2D) {
@@ -357,7 +298,7 @@ extension MapViewController:HandleMapSearch
         mapKitView.removeAnnotations(annotationArray)
         annotationArray.removeAll()
         
-        let latitude = location.latitude
+        let latitude = location.latitude - CLLocationDegrees(0.001)
         let longitude = location.longitude
         let crd:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
@@ -380,7 +321,7 @@ extension MapViewController:HandleMapSearch
             
         if tag == "All"
         {
-            for i in poi_array
+            for i in poi_array.values
                 {
                     let latitude = i.locationCoordinates.latitude
                     let longitude = i.locationCoordinates.longitude
@@ -396,7 +337,7 @@ extension MapViewController:HandleMapSearch
         }
         else
         {
-            for i in poi_array
+            for i in poi_array.values
             {
                 if i.tagCategory == tag
                 {
@@ -489,52 +430,6 @@ extension MKMapView {
 
 
 
-
-
-
-//Extras
-
-//    @objc func showDirection(to:CLLocationCoordinate2D) {
-//        if currentPolylineOverlay.count != 0
-//        {
-//            mapKitView.removeOverlays(currentPolylineOverlay)
-//            currentPolylineOverlay.removeAll()
-//        }
-//
-//        let sC = (locationManager.location?.coordinate)!
-//        let dC = to
-//
-//        let sP = MKPlacemark(coordinate: sC)
-//        let dP = MKPlacemark(coordinate: dC)
-//
-//        let sI = MKMapItem(placemark: sP)
-//        let dI = MKMapItem(placemark: dP)
-//
-//        let directionRequest = MKDirections.Request()
-//        directionRequest.source = sI
-//        directionRequest.destination = dI
-//        directionRequest.transportType = .walking
-//
-//        let direction = MKDirections(request: directionRequest)
-//
-//        direction.calculate(completionHandler: {
-//            res,err in
-//            guard let res = res else {
-//                if let err = err {
-//                    print(err)
-//                }
-//                return
-//            }
-//
-//            let route  = res.routes[0]
-//            self.polyline = route.polyline
-//            self.currentPolylineOverlay.append(self.polyline)
-//            self.mapKitView.addOverlay(self.polyline, level: .aboveLabels)
-//            let rekt = route.polyline.boundingMapRect
-//            self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
-//        })
-//    }
-//
 ////For custom tile from google
 //private func configureTileOverlay()
 //{
@@ -549,39 +444,3 @@ extension MKMapView {
 //    // And finally add it to your MKMapView
 //    mapKitView.addOverlay(tileOverlay, level: .aboveLabels)
 //}
-
-//    func setupDirection()
-//    {
-//        let sC = (locationManager.location?.coordinate)!
-//        let dC = CLLocationCoordinate2DMake(13.344705, 74.793340)
-//
-//        let sP = MKPlacemark(coordinate: sC)
-//        let dP = MKPlacemark(coordinate: dC)
-//
-//        let sI = MKMapItem(placemark: sP)
-//        let dI = MKMapItem(placemark: dP)
-//
-//        let directionRequest = MKDirections.Request()
-//        directionRequest.source = sI
-//        directionRequest.destination = dI
-//        directionRequest.transportType = .walking
-//
-//        let direction = MKDirections(request: directionRequest)
-//
-//        direction.calculate(completionHandler: {
-//            res,err in
-//            guard let res = res else {
-//                if let err = err {
-//                    print(err)
-//                }
-//                return
-//            }
-//
-//            let route  = res.routes[0]
-//            self.mapKitView.addOverlay(route.polyline, level: .aboveRoads)
-//            let rekt = route.polyline.boundingMapRect
-//            self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
-//        })
-//    }
-
-

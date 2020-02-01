@@ -30,7 +30,6 @@ class LocationSearchTableViewController: UITableViewController{
         tableView.dataSource = self
         self.view.backgroundColor = .black
         tableView.tableFooterView = UIView()
-        
         //self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
     }
     
@@ -67,7 +66,7 @@ class LocationSearchTableViewController: UITableViewController{
             filteredArray.sort()
         }
         handleMapSearchDelegate?.addAnnOfTag(tag: tag)
-        tableView.reloadData(with: .automatic)
+        tableView.reloadData(with:.automatic)
     }
     
     func setuppoi()
@@ -80,7 +79,7 @@ class LocationSearchTableViewController: UITableViewController{
             poi_array.append(poi.init(locationName: "AB5", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.353478, longitude:74.793458), directionCoordinates:   CLLocationCoordinate2D(latitude: 13.353478, longitude:74.793458), tagCategory: "Buildings"))
             poi_array.append(poi.init(locationName: "IC", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.351446, longitude: 74.792579), directionCoordinates:  CLLocationCoordinate2D(latitude: 13.351446, longitude: 74.792579), tagCategory: "Buildings"))
             poi_array.append(poi.init(locationName: "NLH", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.351440, longitude:74.792906), directionCoordinates:  CLLocationCoordinate2D(latitude: 13.351440, longitude:74.792906), tagCategory: "Buildings"))
-            poi_array.append(poi.init(locationName: "AB2", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), directionCoordinates:  CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), tagCategory: "Buildings"))
+            poi_array.append(poi.init(locationName: "AB2", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.352386,  longitude: 74.793616), directionCoordinates:  CLLocationCoordinate2D(latitude: 13.352386,  longitude: 74.793616), tagCategory: "Buildings"))
             poi_array.append(poi.init(locationName: "Quadrangle", locationCoordinates: CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), directionCoordinates: CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), tagCategory: "Proshow"))
             
             for i in poi_array{
@@ -186,7 +185,6 @@ class LocationSearchTableViewController: UITableViewController{
 
 extension UITableView {
     func reloadData(with animation: UITableView.RowAnimation) {
-        
         reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
     }
 }

@@ -76,7 +76,6 @@ class bottomUI: BottomSheetController
         super.viewDidLoad()
         self.roundCorners(corners: [.topLeft, .topRight], radius: 12)
         view.backgroundColor = .black
-        suggestionTable.tag = "All"
     }
 
         //suggestionTable.handleMapSearchDelegate = MapViewController()
