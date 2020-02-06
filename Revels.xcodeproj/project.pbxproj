@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		5D0F556223DAB8E700C0A2A8 /* TagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F556123DAB8E700C0A2A8 /* TagsController.swift */; };
 		5D0F556423DAB9E700C0A2A8 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0F556323DAB9E700C0A2A8 /* TagCell.swift */; };
-		5D36FEF623AE30B000B9078D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D36FEF523AE30B000B9078D /* MapViewController.swift */; };
+		5D36FEF623AE30B000B9078D /* MapViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D36FEF523AE30B000B9078D /* MapViewController1.swift */; };
+		5D3E4D3C23E96AD200870992 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3E4D3B23E96AD200870992 /* MapViewController.swift */; };
 		5D3FF89423B138E9007D9F7E /* MITGPX.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D3FF89323B138E9007D9F7E /* MITGPX.gpx */; };
 		5D40D81E23B782C7002E3432 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D40D81D23B782C7002E3432 /* test.json */; };
+		5D81AE8E23E88B7400823AD8 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D81AE8D23E88B7400823AD8 /* BottomSheetViewController.swift */; };
 		5D924DE523AF73A10026DC4D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D924DE423AF73A10026DC4D /* MapKit.framework */; };
 		5DAB4A8E23CB748300CF4090 /* mapTile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAB4A8D23CB748300CF4090 /* mapTile.json */; };
 		5DAFB95F23D8D0D100856EBA /* bottomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAFB95E23D8D0D100856EBA /* bottomUI.swift */; };
@@ -74,9 +76,11 @@
 /* Begin PBXFileReference section */
 		5D0F556123DAB8E700C0A2A8 /* TagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsController.swift; sourceTree = "<group>"; };
 		5D0F556323DAB9E700C0A2A8 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
-		5D36FEF523AE30B000B9078D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5D36FEF523AE30B000B9078D /* MapViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController1.swift; sourceTree = "<group>"; };
+		5D3E4D3B23E96AD200870992 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5D3FF89323B138E9007D9F7E /* MITGPX.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MITGPX.gpx; sourceTree = "<group>"; };
 		5D40D81D23B782C7002E3432 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = Revels/test.json; sourceTree = SOURCE_ROOT; };
+		5D81AE8D23E88B7400823AD8 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		5D924DE423AF73A10026DC4D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5DAB4A8D23CB748300CF4090 /* mapTile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mapTile.json; path = ../../../../mapTile.json; sourceTree = "<group>"; };
 		5DAFB95E23D8D0D100856EBA /* bottomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomUI.swift; sourceTree = "<group>"; };
@@ -165,9 +169,11 @@
 		5D36FEF423AE2D5700B9078D /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				5D36FEF523AE30B000B9078D /* MapViewController.swift */,
+				5D36FEF523AE30B000B9078D /* MapViewController1.swift */,
 				5DAFB95E23D8D0D100856EBA /* bottomUI.swift */,
 				5DF2637C23E1DF0D00D2A2AB /* placeInfoUI.swift */,
+				5D3E4D3B23E96AD200870992 /* MapViewController.swift */,
+				5D81AE8D23E88B7400823AD8 /* BottomSheetViewController.swift */,
 				5DAB4A8D23CB748300CF4090 /* mapTile.json */,
 				5D0F556123DAB8E700C0A2A8 /* TagsController.swift */,
 				5D0F556323DAB9E700C0A2A8 /* TagCell.swift */,
@@ -510,6 +516,7 @@
 				B2522790222831B400EF9A8D /* QRCodeReaderViewControllerDelegate.swift in Sources */,
 				B25227C6222883B000EF9A8D /* DetailsCell.swift in Sources */,
 				B264641021F21A81008A6C3C /* Extensions+UIView.swift in Sources */,
+				5D81AE8E23E88B7400823AD8 /* BottomSheetViewController.swift in Sources */,
 				B2516B872227A04A008AA097 /* MyEventsTableViewController.swift in Sources */,
 				B2C0F93921CB7CE100E4550C /* MenuCell.swift in Sources */,
 				B252280A2228A36200EF9A8D /* EventTableViewCell.swift in Sources */,
@@ -522,6 +529,7 @@
 				B2943B642229614D0045D89F /* AboutCollectionViewController.swift in Sources */,
 				B2522797222831B400EF9A8D /* ToggleTorchButton.swift in Sources */,
 				B2E00D3521D2492000FB17FC /* Extensions.swift in Sources */,
+				5D3E4D3C23E96AD200870992 /* MapViewController.swift in Sources */,
 				B2CE701A22269F0C006828B9 /* LoginController.swift in Sources */,
 				B2CE705122270F4D006828B9 /* UserController.swift in Sources */,
 				B25227C8222883B000EF9A8D /* HeaderView.swift in Sources */,
@@ -547,7 +555,7 @@
 				B2C0F93A21CB7CE100E4550C /* MenuController.swift in Sources */,
 				B2C0F93C21CB7CE100E4550C /* ScheduleController.swift in Sources */,
 				B2522796222831B400EF9A8D /* QRCodeReaderViewController.swift in Sources */,
-				5D36FEF623AE30B000B9078D /* MapViewController.swift in Sources */,
+				5D36FEF623AE30B000B9078D /* MapViewController1.swift in Sources */,
 				B25227C0222883B000EF9A8D /* HomeController.swift in Sources */,
 				B2943B632229614D0045D89F /* AboutCollectionViewCell.swift in Sources */,
 			);
