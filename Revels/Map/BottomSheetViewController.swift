@@ -29,16 +29,13 @@ class BottomSheetViewController: BottomSheetController{
         view.backgroundColor = .black
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         currentTag = "All"
-        var j = 0.0
         for i in poi_array
         {
-
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + j) {
-                self.handleMapDelegate?.setTag(name: i.locationName, location: i.locationCoordinates, tag: i.tagCategory)
-            }
-            j+=0.1
+            handleMapDelegate?.setupTagDictionary(name: i.locationName, tag: i.tagCategory)
+            handleMapDelegate?.addAnnotation(name: i.locationName, locationCoordinate: i.locationCoordinates)
         }
     }
     
@@ -60,13 +57,13 @@ class BottomSheetViewController: BottomSheetController{
                tagsController.menuBar.backgroundColor = UIColor.black
                tagsController.collectionView.backgroundColor = UIColor.black
                tagsController.shadowBar.backgroundColor = UIColor.black
-       }
+    }
 
-//MARK: tableView conf
+    //MARK: tableView conf
     
     var placeArray = [String]()
     private var filteredArray = [String]()
-    var tagArray = [String:String]()
+    
     
     lazy var locationTableView: UITableView = {
         let tableView = UITableView()
@@ -96,8 +93,8 @@ class BottomSheetViewController: BottomSheetController{
         poi_array.append(poi.init(locationName: "AB2", locationCoordinates:  CLLocationCoordinate2D(latitude: 13.352386,  longitude: 74.793616), directionCoordinates:  CLLocationCoordinate2D(latitude: 13.352386,  longitude: 74.793616), tagCategory: "Buildings"))
         poi_array.append(poi.init(locationName: "Quadrangle", locationCoordinates: CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), directionCoordinates: CLLocationCoordinate2D(latitude: 13.352727, longitude: 74.792803), tagCategory: "Proshow"))
         for i in poi_array{
-                       placeArray.append(i.locationName)
-                       placeArray.sort()
+            placeArray.append(i.locationName)
+            placeArray.sort()
                    }
     }
     
@@ -183,7 +180,6 @@ class BottomSheetViewController: BottomSheetController{
      fileprivate func setupLocationInfoViewLayout() {
     
             locationInfoView.addSubview(nameLabel)
-            //nameLabel.text = "test"
             nameLabel.leftAnchor.constraint(equalTo: locationInfoView.leftAnchor, constant: 20).isActive = true
             nameLabel.topAnchor.constraint(equalTo: locationInfoView.topAnchor, constant: 8).isActive = true
             nameLabel.widthAnchor.constraint(equalTo: locationInfoView.widthAnchor, constant: -32).isActive = true
@@ -197,7 +193,7 @@ class BottomSheetViewController: BottomSheetController{
     
             locationInfoView.addSubview(directionButton)
             directionButton.centerXAnchor.constraint(equalTo: locationInfoView.centerXAnchor , constant: 0).isActive = true
-            directionButton.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 20).isActive = true
+            directionButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 22).isActive = true
             directionButton.widthAnchor.constraint(equalTo: locationInfoView.widthAnchor, constant: -50).isActive = true
             directionButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     
@@ -221,9 +217,10 @@ class BottomSheetViewController: BottomSheetController{
     {
         nameLabel.text = title
         currentLocation = title
-        if(UIImage(named: title) != nil) {
+//        if(UIImage(named: title) != nil) {
+//            print(title)
             imageView.image = UIImage(named:title)
-        }
+//        }
         locationInfoView.isHidden = false
         changePosition(to: .middle)
         for i in poi_array
@@ -343,7 +340,7 @@ extension BottomSheetViewController:TagsControllerDelegate
 {
     func didTapTag(indexPath: IndexPath) {
 
-        guard currentTag != tags[indexPath.row] else {return}
+        //guard currentTag != tags[indexPath.row] else {return}
         currentTag = tags[indexPath.row]
         handleMapDelegate?.removeAnnotations()
         if currentTag != "All"
@@ -353,23 +350,20 @@ extension BottomSheetViewController:TagsControllerDelegate
             {
                if i.tagCategory == currentTag
                {
-                    handleMapDelegate?.setTag(name: i.locationName, location: i.locationCoordinates, tag:i.tagCategory )
+                  //  handleMapDelegate?.setupTagDictionary(name: i.locationName, tag: i.tagCategory)
+                    handleMapDelegate?.addAnnotation(name: i.locationName, locationCoordinate: i.locationCoordinates)
                     filteredArray.append(i.locationName)
-                    //handleMapDelegate?.addAnnotation(name: i.locationName, locationCoordinate: i.locationCoordinates)
                }
             }
             filteredArray.sort()
         }
         else
         {
-            var j = 0.0
+           // var j = 0.0
             for i in poi_array
             {
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + j) {
-                    self.handleMapDelegate?.setTag(name: i.locationName, location: i.locationCoordinates, tag: i.tagCategory)
-                }
-                j+=0.03
+              // handleMapDelegate?.setupTagDictionary(name: i.locationName, tag: i.tagCategory)
+                handleMapDelegate?.addAnnotation(name: i.locationName, locationCoordinate: i.locationCoordinates)
             }
         }
         locationTableView.reloadData(with: .automatic)

@@ -14,11 +14,13 @@ class MapViewController: UIViewController
 {
      override func viewDidLoad()
      {
+        if #available(iOS 13.0, *) {
+        self.overrideUserInterfaceStyle = .dark
+        }
         super.viewDidLoad()
         setupView()
         checkLocationServices()
         mapKitView.delegate = self
-        
         bottomSheetVC.setDelegate(vc: self)
      }
     
@@ -52,24 +54,15 @@ class MapViewController: UIViewController
         map.isScrollEnabled = true
         map.showsPointsOfInterest = true
         map.showsBuildings = true
-
         return map
     }()
     
     let locationManager = CLLocationManager()
-    var selectedAnnotation:MKAnnotation? = nil
-    var annotationArray = [MKPointAnnotation]()
+    var selectedAnnotation:MKAnnotation? = nil      //For deselcting selected one when close button is clicked
+    var annotationArray = [MKPointAnnotation]()     //For removing rendered annotations
     var polyline = MKPolyline()
-    var currentPolylineOverlay = [MKPolyline]()
-    var annotationName:String?
-    var annotationLocation:CLLocationCoordinate2D?
-    var curtag:String?
-    {
-        didSet
-        {
-            addAnnotation(name: annotationName!, locationCoordinate: annotationLocation!)
-        }
-    }
+    var currentPolylineOverlay = [MKPolyline]()     //For removing rendered polyline
+    var tagArray = [String:String]()                //For glyph image
     
     func checkLocationServices()
     {
@@ -144,21 +137,11 @@ class MapViewController: UIViewController
         }
     }
     
-    func addAnnotation(name: String, locationCoordinate: CLLocationCoordinate2D) {
-        let annotation = MKPointAnnotation()
-        annotation.title = name
-        annotation.coordinate = locationCoordinate
-        annotationArray.append(annotation)
-        mapKitView.addAnnotation(annotation)
-        let region = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: 13.347488, longitude: 74.793315), latitudinalMeters: 1000, longitudinalMeters: 1000)
-        mapKitView.setRegion(region, animated: true)
-    }
-    
     //MARK: BottomSheet conf
     let bottomSheetVC = BottomSheetViewController()
-    
 }
 
+//Extensions
 extension MapViewController:CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
@@ -176,7 +159,6 @@ extension MKMapView {
 }
 
 extension MapViewController:MKMapViewDelegate{
-
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
         //Renders polyline
@@ -200,13 +182,16 @@ extension MapViewController:MKMapViewDelegate{
 
         let identifier = "Annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
         let markerAnnotation  = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         
-        if let imgName = curtag
+        if let name = annotation.title
         {
-            markerAnnotation.glyphImage = UIImage(named:imgName)
+            if let imgName = tagArray[name ?? ""]
+            {
+                markerAnnotation.glyphImage = UIImage(named:imgName)
+            }
         }
+    
         markerAnnotation.glyphTintColor = .black
         markerAnnotation.animatesWhenAdded = true
         annotationView = markerAnnotation
@@ -249,11 +234,12 @@ extension MapViewController:MKMapViewDelegate{
 protocol HandleMapDelegate
 {
     func zoomToPlace(name:String,location:CLLocationCoordinate2D)
+    func addAnnotation(name: String, locationCoordinate: CLLocationCoordinate2D)
     func removeAnnotations()
     func showDirection(to:CLLocationCoordinate2D)
     func removeDirection()
     func showNavigation(to:String,coordinates:CLLocationCoordinate2D)
-    func setTag(name:String,location:CLLocationCoordinate2D,tag:String)
+    func setupTagDictionary(name:String,tag:String)
 }
 
 extension MapViewController:HandleMapDelegate
@@ -266,7 +252,6 @@ extension MapViewController:HandleMapDelegate
                    mapKitView.removeOverlays(currentPolylineOverlay)
                    currentPolylineOverlay.removeAll()
                }
-        //removeAnnotations()
 
         let latitude = location.latitude - CLLocationDegrees(0.001)
         let longitude = location.longitude
@@ -344,6 +329,16 @@ extension MapViewController:HandleMapDelegate
         self.mapKitView.setRegion(MKCoordinateRegion(rekt), animated: true)
         })
     }
+    
+    func addAnnotation(name: String, locationCoordinate: CLLocationCoordinate2D) {
+          let annotation = MKPointAnnotation()
+          annotation.title = name
+          annotation.coordinate = locationCoordinate
+          annotationArray.append(annotation)
+          mapKitView.addAnnotation(annotation)
+          let region = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: 13.347488, longitude: 74.793315), latitudinalMeters: 1000, longitudinalMeters: 1000)
+          mapKitView.setRegion(region, animated: true)
+      }
 
     func removeDirection() {
         if currentPolylineOverlay.count != 0
@@ -363,9 +358,8 @@ extension MapViewController:HandleMapDelegate
         mapItem.openInMaps(launchOptions: options)
     }
     
-    func setTag(name: String, location: CLLocationCoordinate2D, tag: String) {
-        annotationName = name
-        annotationLocation = location
-        curtag = tag
+    func setupTagDictionary(name:String,tag:String)
+    {
+        tagArray[name] = tag
     }
 }
